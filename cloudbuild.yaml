@@ -2,6 +2,8 @@ steps:
 - name: 'gcr.io/cloud-builders/yarn'
   args: ['install']
   dir: 'functions/autodeploy'
+- name: 'bash'
+  args: ['ls' ,'-l']
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['functions', 'deploy', 'la-repo-function-build', '--triger-http', '--runtime', 'python37', 'entry-point', 'greetings_http']
+  args: ['functions', 'deploy', 'la-repo-function-build', '--source', 'http-function', '--trigger-http', '--runtime', 'python37', '--entry-point', 'greetings_http']
   dir: 'functions/autodeploy'
